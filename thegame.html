@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRACTURE 1.01</title>
+  <link rel="stylesheet" href="stylegame.css" />
+  <link rel="preload" as="audio" href="https://github.com/Soul-Open/FRACTURE/raw/main/heartbeat.mp3">
+
+</head>
+<body>
+  <div id="difficultySelection">
+    <p>Select Difficulty:</p>
+    <button class="difficulty" data-player="1.5" data-enemy="0.4">Easy</button>
+    <button class="difficulty" data-player="1.2" data-enemy="0.6">Normal</button>
+    <button class="difficulty" data-player="1.0" data-enemy="0.9">Hard</button>
+  </div>
+
+  <!-- Audio Toggle -->
+  <div id="audioToggleSection">
+    <button id="toggleAudio">🔊 Sound On</button>
+  </div>
+  <div id="startScreen" class="screen">
+    <h1 class="glitchText">FRACTURE</h1>
+    <p class="subtitle">do not trust the echoes</p>
+    <button id="startButton">Begin</button>
+  </div>
+
+  <div id="gameScreen" class="screen">
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
+  </div>
+  <button id="restartBtn" style="display:none; position:fixed; top:20px; right:20px; font-size:18px; z-index:10;">Restart</button>
+
+
+  <audio id="heartbeatSFX" src="heartbeat.mp3" preload="auto"></audio>
+  <audio id="ambientLoop" src="ambient_loop.mp3" preload="auto" loop></audio>
+  <video id="jumpscareVideo" src="jumpscare.mp4" autoplay preload="auto"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 9999;
+    display: none;
+  ">
+</video>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>FRACTURE V1.01</title>
+    </head>
+    <body>
+        <link rel="stylesheet" href="stylesmain.css">
+        <p>Hey! You have received a invitation from an organization called "Random Trips to Fun"</p>
+        <br>
+        <p>Do you wish to enter this trip?</p>
+        
+  <input type="radio" id="yesOption" name="confirmation" value="yes">
+  <label for="yesOption">Yes</label>
+
+  <input type="radio" id="noOption" name="confirmation" value="no">
+  <label for="noOption">No</label>
+  <audio id="cinematicMusic" src="hurray.mp3" type="audio/mpeg" preload="auto"></audio>
+  <audio id="noSFX" src="nope.mp3" type="audio/mpeg" preload="auto"></audio>
+  <div id="overlay">
+    <div id="overlayContent">
+      Redirecting to<br><strong>FRACTURE, Version 1.01</strong><br>
+      <span id="countdown">in 5 seconds...</span>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("overlay");
+      const content = document.getElementById("overlayContent");
+      const countdown = document.getElementById("countdown");
+      const cinematicMusic = document.getElementById("cinematicMusic");
+      const noSFX = document.getElementById("noSFX");
+      const yesRadio = document.getElementById("yesOption");
+      const noRadio = document.getElementById("noOption");
+  
+      function showOverlayAndRedirect() {
+        let timeLeft = 5;
+  
+        overlay.style.display = "flex";
+        content.classList.add("zoom-in");
+        countdown.textContent = `in ${timeLeft} seconds...`;
+  
+        const interval = setInterval(() => {
+          timeLeft--;
+          countdown.textContent = `in ${timeLeft} seconds...`;
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+              window.location.href = "https://alanbutidk.github.io/FRACTURE/thegame.html";
+            }, 1000);
+          }
+        }, 1000);
+      }
+  
+      // YES -> cinematic + redirect
+      yesRadio.addEventListener("change", () => {
+        if (yesRadio.checked) {
+          cinematicMusic.currentTime = 0;
+          cinematicMusic.play();
+          showOverlayAndRedirect();
+        }
+      });
+  
+      // NO -> short reject sfx
+      noRadio.addEventListener("change", () => {
+        if (noRadio.checked) {
+          noSFX.currentTime = 0;
+          noSFX.play();
+        }
+      });
+    });
+  </script>
+  
+</html>
